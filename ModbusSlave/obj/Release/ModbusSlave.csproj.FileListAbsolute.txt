@@ -1,0 +1,16 @@
+E:\CodeStudy\ModbusTool\ModbusSlave\bin\Release\ModbusSlave.exe.config
+E:\CodeStudy\ModbusTool\ModbusSlave\bin\Release\ModbusSlave.exe
+E:\CodeStudy\ModbusTool\ModbusSlave\bin\Release\ModbusSlave.pdb
+E:\CodeStudy\ModbusTool\ModbusSlave\bin\Release\Modbus.Common.dll
+E:\CodeStudy\ModbusTool\ModbusSlave\bin\Release\ModbusLib.dll
+E:\CodeStudy\ModbusTool\ModbusSlave\bin\Release\Modbus.Common.pdb
+E:\CodeStudy\ModbusTool\ModbusSlave\bin\Release\Modbus.Common.dll.config
+E:\CodeStudy\ModbusTool\ModbusSlave\bin\Release\ModbusLib.pdb
+E:\CodeStudy\ModbusTool\ModbusSlave\obj\Release\ModbusSlave.csprojAssemblyReference.cache
+E:\CodeStudy\ModbusTool\ModbusSlave\obj\Release\ModbusSlave.Properties.Resources.resources
+E:\CodeStudy\ModbusTool\ModbusSlave\obj\Release\ModbusSlave.SlaveForm.resources
+E:\CodeStudy\ModbusTool\ModbusSlave\obj\Release\ModbusSlave.csproj.GenerateResource.cache
+E:\CodeStudy\ModbusTool\ModbusSlave\obj\Release\ModbusSlave.csproj.CoreCompileInputs.cache
+E:\CodeStudy\ModbusTool\ModbusSlave\obj\Release\ModbusSlave.csproj.CopyComplete
+E:\CodeStudy\ModbusTool\ModbusSlave\obj\Release\ModbusSlave.exe
+E:\CodeStudy\ModbusTool\ModbusSlave\obj\Release\ModbusSlave.pdb

@@ -1,0 +1,6 @@
+E:\CodeStudy\ModbusTool\ModbusLib\bin\Release\ModbusLib.dll
+E:\CodeStudy\ModbusTool\ModbusLib\bin\Release\ModbusLib.pdb
+E:\CodeStudy\ModbusTool\ModbusLib\obj\Release\ModbusLib.csprojAssemblyReference.cache
+E:\CodeStudy\ModbusTool\ModbusLib\obj\Release\ModbusLib.csproj.CoreCompileInputs.cache
+E:\CodeStudy\ModbusTool\ModbusLib\obj\Release\ModbusLib.dll
+E:\CodeStudy\ModbusTool\ModbusLib\obj\Release\ModbusLib.pdb
