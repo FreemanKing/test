@@ -38,10 +38,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxSlaveID = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            //this.radioButtonLED = new System.Windows.Forms.RadioButton();
             this.radioButtonInteger = new System.Windows.Forms.RadioButton();
-            //this.radioButtonHex = new System.Windows.Forms.RadioButton();
-            //this.radioButtonBinary = new System.Windows.Forms.RadioButton();
             this.buttonImport = new System.Windows.Forms.Button();
             this.buttonExport = new System.Windows.Forms.Button();
             this.grpStart = new System.Windows.Forms.GroupBox();
@@ -67,22 +64,17 @@
             this.textBoxPort = new System.Windows.Forms.TextBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.grpExchange = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new Modbus.Common.TabControlEx();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dataTab1 = new Modbus.Common.DataTab();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataTab2 = new Modbus.Common.DataTab();
-            this.grpExchange = new System.Windows.Forms.GroupBox();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.grpStart.SuspendLayout();
             this.groupBoxRTU.SuspendLayout();
             this.groupBoxMode.SuspendLayout();
             this.groupBoxTCP.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.grpExchange.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox4
@@ -90,18 +82,18 @@
             this.groupBox4.Controls.Add(this.buttonPauseLog);
             this.groupBox4.Controls.Add(this.listBoxCommLog);
             this.groupBox4.Controls.Add(this.buttonClear);
-            this.groupBox4.Location = new System.Drawing.Point(7, 699);
+            this.groupBox4.Location = new System.Drawing.Point(7, 645);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(859, 194);
+            this.groupBox4.Size = new System.Drawing.Size(859, 179);
             this.groupBox4.TabIndex = 20;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Communication Log";
             // 
             // buttonPauseLog
             // 
-            this.buttonPauseLog.Location = new System.Drawing.Point(660, 19);
+            this.buttonPauseLog.Location = new System.Drawing.Point(660, 18);
             this.buttonPauseLog.Name = "buttonPauseLog";
-            this.buttonPauseLog.Size = new System.Drawing.Size(86, 28);
+            this.buttonPauseLog.Size = new System.Drawing.Size(86, 26);
             this.buttonPauseLog.TabIndex = 25;
             this.buttonPauseLog.Text = "Pause";
             this.buttonPauseLog.Click += new System.EventHandler(this.buttonPauseLog_Click);
@@ -112,123 +104,93 @@
             this.listBoxCommLog.ForeColor = System.Drawing.Color.LimeGreen;
             this.listBoxCommLog.FormattingEnabled = true;
             this.listBoxCommLog.HorizontalScrollbar = true;
-            this.listBoxCommLog.Location = new System.Drawing.Point(3, 54);
+            this.listBoxCommLog.ItemHeight = 12;
+            this.listBoxCommLog.Location = new System.Drawing.Point(3, 50);
             this.listBoxCommLog.Name = "listBoxCommLog";
-            this.listBoxCommLog.Size = new System.Drawing.Size(847, 134);
+            this.listBoxCommLog.Size = new System.Drawing.Size(847, 124);
             this.listBoxCommLog.TabIndex = 3;
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(752, 19);
+            this.buttonClear.Location = new System.Drawing.Point(752, 18);
             this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(86, 28);
+            this.buttonClear.Size = new System.Drawing.Size(86, 26);
             this.buttonClear.TabIndex = 24;
             this.buttonClear.Text = "Clear";
             this.buttonClear.Click += new System.EventHandler(this.ButtonClearLogClick);
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(28, 43);
+            this.label1.Location = new System.Drawing.Point(28, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 14);
+            this.label1.Size = new System.Drawing.Size(86, 13);
             this.label1.TabIndex = 30;
             this.label1.Text = "Slave delay (ms)";
             // 
             // textBoxSlaveDelay
             // 
-            this.textBoxSlaveDelay.Location = new System.Drawing.Point(120, 40);
+            this.textBoxSlaveDelay.Location = new System.Drawing.Point(120, 37);
             this.textBoxSlaveDelay.Name = "textBoxSlaveDelay";
-            this.textBoxSlaveDelay.Size = new System.Drawing.Size(40, 20);
+            this.textBoxSlaveDelay.Size = new System.Drawing.Size(40, 21);
             this.textBoxSlaveDelay.TabIndex = 29;
             this.textBoxSlaveDelay.Text = "1";
             this.textBoxSlaveDelay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(28, 23);
+            this.label7.Location = new System.Drawing.Point(28, 21);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 14);
+            this.label7.Size = new System.Drawing.Size(74, 13);
             this.label7.TabIndex = 28;
             this.label7.Text = "Slave ID";
             // 
             // textBoxSlaveID
             // 
-            this.textBoxSlaveID.Location = new System.Drawing.Point(120, 20);
+            this.textBoxSlaveID.Location = new System.Drawing.Point(120, 18);
             this.textBoxSlaveID.Name = "textBoxSlaveID";
-            this.textBoxSlaveID.Size = new System.Drawing.Size(40, 20);
+            this.textBoxSlaveID.Size = new System.Drawing.Size(40, 21);
             this.textBoxSlaveID.TabIndex = 27;
             this.textBoxSlaveID.Text = "1";
             this.textBoxSlaveID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // groupBox3
             // 
-            //this.groupBox3.Controls.Add(this.radioButtonLED);
             this.groupBox3.Controls.Add(this.radioButtonInteger);
-            //this.groupBox3.Controls.Add(this.radioButtonHex);
-            //this.groupBox3.Controls.Add(this.radioButtonBinary);
-            this.groupBox3.Location = new System.Drawing.Point(7, 144);
+            this.groupBox3.Location = new System.Drawing.Point(7, 133);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(166, 110);
+            this.groupBox3.Size = new System.Drawing.Size(166, 102);
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Display Format";
-            // 
-            // radioButtonLED
-            // 
-            //this.radioButtonLED.Location = new System.Drawing.Point(13, 19);
-            //this.radioButtonLED.Name = "radioButtonLED";
-            //this.radioButtonLED.Size = new System.Drawing.Size(67, 21);
-            //this.radioButtonLED.TabIndex = 1;
-            //this.radioButtonLED.Tag = "LED";
-            //this.radioButtonLED.Text = "LED";
-            //this.radioButtonLED.Click += new System.EventHandler(this.RadioButtonDisplayFormatCheckedChanged);
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // radioButtonInteger
             // 
             this.radioButtonInteger.Checked = true;
-            this.radioButtonInteger.Location = new System.Drawing.Point(13, 81);
+            this.radioButtonInteger.Location = new System.Drawing.Point(13, 32);
             this.radioButtonInteger.Name = "radioButtonInteger";
-            this.radioButtonInteger.Size = new System.Drawing.Size(67, 21);
+            this.radioButtonInteger.Size = new System.Drawing.Size(67, 48);
             this.radioButtonInteger.TabIndex = 2;
             this.radioButtonInteger.TabStop = true;
             this.radioButtonInteger.Tag = "Integer";
             this.radioButtonInteger.Text = "Integer";
+            this.radioButtonInteger.CheckedChanged += new System.EventHandler(this.radioButtonInteger_CheckedChanged);
             this.radioButtonInteger.Click += new System.EventHandler(this.RadioButtonDisplayFormatCheckedChanged);
-            // 
-            // radioButtonHex
-            // 
-            //this.radioButtonHex.Location = new System.Drawing.Point(13, 61);
-            //this.radioButtonHex.Name = "radioButtonHex";
-            //this.radioButtonHex.Size = new System.Drawing.Size(67, 20);
-            //this.radioButtonHex.TabIndex = 1;
-            //this.radioButtonHex.Tag = "Hex";
-            //this.radioButtonHex.Text = "Hex";
-            //this.radioButtonHex.Click += new System.EventHandler(this.RadioButtonDisplayFormatCheckedChanged);
-            // 
-            // radioButtonBinary
-            // 
-            //this.radioButtonBinary.Location = new System.Drawing.Point(13, 40);
-            //this.radioButtonBinary.Name = "radioButtonBinary";
-            //this.radioButtonBinary.Size = new System.Drawing.Size(67, 21);
-            //this.radioButtonBinary.TabIndex = 0;
-            //this.radioButtonBinary.Tag = "Binary";
-            //this.radioButtonBinary.Text = "Binary";
-            //this.radioButtonBinary.Click += new System.EventHandler(this.RadioButtonDisplayFormatCheckedChanged);
             // 
             // buttonImport
             // 
-            this.buttonImport.Location = new System.Drawing.Point(188, 15);
+            this.buttonImport.Location = new System.Drawing.Point(188, 14);
             this.buttonImport.Name = "buttonImport";
-            this.buttonImport.Size = new System.Drawing.Size(86, 28);
+            this.buttonImport.Size = new System.Drawing.Size(86, 26);
             this.buttonImport.TabIndex = 26;
             this.buttonImport.Text = "Import";
             this.buttonImport.Click += new System.EventHandler(this.ButtonImportClick);
             // 
             // buttonExport
             // 
-            this.buttonExport.Location = new System.Drawing.Point(188, 50);
+            this.buttonExport.Location = new System.Drawing.Point(188, 46);
             this.buttonExport.Name = "buttonExport";
-            this.buttonExport.Size = new System.Drawing.Size(86, 28);
+            this.buttonExport.Size = new System.Drawing.Size(86, 26);
             this.buttonExport.TabIndex = 25;
             this.buttonExport.Text = "Export";
             this.buttonExport.Click += new System.EventHandler(this.ButtonExportClick);
@@ -240,9 +202,9 @@
             this.grpStart.Controls.Add(this.groupBoxRTU);
             this.grpStart.Controls.Add(this.groupBoxMode);
             this.grpStart.Controls.Add(this.groupBoxTCP);
-            this.grpStart.Location = new System.Drawing.Point(7, 12);
+            this.grpStart.Location = new System.Drawing.Point(7, 11);
             this.grpStart.Name = "grpStart";
-            this.grpStart.Size = new System.Drawing.Size(665, 126);
+            this.grpStart.Size = new System.Drawing.Size(665, 116);
             this.grpStart.TabIndex = 18;
             this.grpStart.TabStop = false;
             this.grpStart.Text = "Communication";
@@ -260,9 +222,9 @@
             this.groupBoxRTU.Controls.Add(this.label4);
             this.groupBoxRTU.Controls.Add(this.label5);
             this.groupBoxRTU.Enabled = false;
-            this.groupBoxRTU.Location = new System.Drawing.Point(291, 13);
+            this.groupBoxRTU.Location = new System.Drawing.Point(291, 12);
             this.groupBoxRTU.Name = "groupBoxRTU";
-            this.groupBoxRTU.Size = new System.Drawing.Size(377, 106);
+            this.groupBoxRTU.Size = new System.Drawing.Size(377, 98);
             this.groupBoxRTU.TabIndex = 25;
             this.groupBoxRTU.TabStop = false;
             this.groupBoxRTU.Text = "RTU";
@@ -276,17 +238,17 @@
             "1 Bit",
             "1.5 Bits",
             "2 Bits"});
-            this.comboBoxStopBits.Location = new System.Drawing.Point(280, 48);
+            this.comboBoxStopBits.Location = new System.Drawing.Point(280, 44);
             this.comboBoxStopBits.Name = "comboBoxStopBits";
-            this.comboBoxStopBits.Size = new System.Drawing.Size(94, 21);
+            this.comboBoxStopBits.Size = new System.Drawing.Size(94, 20);
             this.comboBoxStopBits.TabIndex = 27;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(215, 52);
+            this.label10.Location = new System.Drawing.Point(215, 48);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(58, 13);
+            this.label10.Size = new System.Drawing.Size(71, 12);
             this.label10.TabIndex = 26;
             this.label10.Text = "Stop Bits =";
             // 
@@ -297,17 +259,17 @@
             this.comboBoxDataBits.Items.AddRange(new object[] {
             "7 Bits",
             "8 Bits"});
-            this.comboBoxDataBits.Location = new System.Drawing.Point(280, 20);
+            this.comboBoxDataBits.Location = new System.Drawing.Point(280, 18);
             this.comboBoxDataBits.Name = "comboBoxDataBits";
-            this.comboBoxDataBits.Size = new System.Drawing.Size(94, 21);
+            this.comboBoxDataBits.Size = new System.Drawing.Size(94, 20);
             this.comboBoxDataBits.TabIndex = 25;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(215, 24);
+            this.label9.Location = new System.Drawing.Point(215, 22);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(59, 13);
+            this.label9.Size = new System.Drawing.Size(71, 12);
             this.label9.TabIndex = 24;
             this.label9.Text = "Data Bits =";
             // 
@@ -315,17 +277,17 @@
             // 
             this.comboBoxParity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxParity.FormattingEnabled = true;
-            this.comboBoxParity.Location = new System.Drawing.Point(80, 74);
+            this.comboBoxParity.Location = new System.Drawing.Point(80, 68);
             this.comboBoxParity.Name = "comboBoxParity";
-            this.comboBoxParity.Size = new System.Drawing.Size(94, 21);
+            this.comboBoxParity.Size = new System.Drawing.Size(94, 20);
             this.comboBoxParity.TabIndex = 23;
             // 
             // labelParity
             // 
             this.labelParity.AutoSize = true;
-            this.labelParity.Location = new System.Drawing.Point(36, 78);
+            this.labelParity.Location = new System.Drawing.Point(36, 72);
             this.labelParity.Name = "labelParity";
-            this.labelParity.Size = new System.Drawing.Size(42, 13);
+            this.labelParity.Size = new System.Drawing.Size(53, 12);
             this.labelParity.TabIndex = 22;
             this.labelParity.Text = "Parity =";
             // 
@@ -349,35 +311,35 @@
             "600",
             "300",
             "150"});
-            this.comboBoxBaudRate.Location = new System.Drawing.Point(80, 47);
+            this.comboBoxBaudRate.Location = new System.Drawing.Point(80, 43);
             this.comboBoxBaudRate.Name = "comboBoxBaudRate";
-            this.comboBoxBaudRate.Size = new System.Drawing.Size(94, 21);
+            this.comboBoxBaudRate.Size = new System.Drawing.Size(94, 20);
             this.comboBoxBaudRate.TabIndex = 21;
             // 
             // comboBoxSerialPorts
             // 
             this.comboBoxSerialPorts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSerialPorts.FormattingEnabled = true;
-            this.comboBoxSerialPorts.Location = new System.Drawing.Point(80, 19);
+            this.comboBoxSerialPorts.Location = new System.Drawing.Point(80, 18);
             this.comboBoxSerialPorts.Name = "comboBoxSerialPorts";
-            this.comboBoxSerialPorts.Size = new System.Drawing.Size(94, 21);
+            this.comboBoxSerialPorts.Size = new System.Drawing.Size(94, 20);
             this.comboBoxSerialPorts.TabIndex = 0;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 23);
+            this.label4.Location = new System.Drawing.Point(11, 21);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.Size = new System.Drawing.Size(71, 12);
             this.label4.TabIndex = 10;
             this.label4.Text = "Port Name =";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(36, 51);
+            this.label5.Location = new System.Drawing.Point(36, 47);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.Size = new System.Drawing.Size(41, 12);
             this.label5.TabIndex = 12;
             this.label5.Text = "Baud =";
             // 
@@ -386,9 +348,9 @@
             this.groupBoxMode.Controls.Add(this.radioButtonRTU);
             this.groupBoxMode.Controls.Add(this.radioButtonUDP);
             this.groupBoxMode.Controls.Add(this.radioButtonTCP);
-            this.groupBoxMode.Location = new System.Drawing.Point(6, 19);
+            this.groupBoxMode.Location = new System.Drawing.Point(6, 18);
             this.groupBoxMode.Name = "groupBoxMode";
-            this.groupBoxMode.Size = new System.Drawing.Size(81, 100);
+            this.groupBoxMode.Size = new System.Drawing.Size(81, 92);
             this.groupBoxMode.TabIndex = 0;
             this.groupBoxMode.TabStop = false;
             this.groupBoxMode.Text = "Mode";
@@ -396,9 +358,9 @@
             // radioButtonRTU
             // 
             this.radioButtonRTU.AutoSize = true;
-            this.radioButtonRTU.Location = new System.Drawing.Point(6, 59);
+            this.radioButtonRTU.Location = new System.Drawing.Point(6, 54);
             this.radioButtonRTU.Name = "radioButtonRTU";
-            this.radioButtonRTU.Size = new System.Drawing.Size(48, 17);
+            this.radioButtonRTU.Size = new System.Drawing.Size(41, 16);
             this.radioButtonRTU.TabIndex = 3;
             this.radioButtonRTU.Text = "RTU";
             this.radioButtonRTU.UseVisualStyleBackColor = true;
@@ -407,9 +369,9 @@
             // radioButtonUDP
             // 
             this.radioButtonUDP.AutoSize = true;
-            this.radioButtonUDP.Location = new System.Drawing.Point(6, 39);
+            this.radioButtonUDP.Location = new System.Drawing.Point(6, 36);
             this.radioButtonUDP.Name = "radioButtonUDP";
-            this.radioButtonUDP.Size = new System.Drawing.Size(48, 17);
+            this.radioButtonUDP.Size = new System.Drawing.Size(41, 16);
             this.radioButtonUDP.TabIndex = 2;
             this.radioButtonUDP.Text = "UDP";
             this.radioButtonUDP.UseVisualStyleBackColor = true;
@@ -419,9 +381,9 @@
             // 
             this.radioButtonTCP.AutoSize = true;
             this.radioButtonTCP.Checked = true;
-            this.radioButtonTCP.Location = new System.Drawing.Point(6, 19);
+            this.radioButtonTCP.Location = new System.Drawing.Point(6, 18);
             this.radioButtonTCP.Name = "radioButtonTCP";
-            this.radioButtonTCP.Size = new System.Drawing.Size(46, 17);
+            this.radioButtonTCP.Size = new System.Drawing.Size(41, 16);
             this.radioButtonTCP.TabIndex = 1;
             this.radioButtonTCP.TabStop = true;
             this.radioButtonTCP.Text = "TCP";
@@ -434,43 +396,43 @@
             this.groupBoxTCP.Controls.Add(this.txtIP);
             this.groupBoxTCP.Controls.Add(this.label6);
             this.groupBoxTCP.Controls.Add(this.textBoxPort);
-            this.groupBoxTCP.Location = new System.Drawing.Point(93, 13);
+            this.groupBoxTCP.Location = new System.Drawing.Point(93, 12);
             this.groupBoxTCP.Name = "groupBoxTCP";
-            this.groupBoxTCP.Size = new System.Drawing.Size(192, 106);
+            this.groupBoxTCP.Size = new System.Drawing.Size(192, 98);
             this.groupBoxTCP.TabIndex = 0;
             this.groupBoxTCP.TabStop = false;
             this.groupBoxTCP.Text = "TCP";
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(9, 50);
+            this.label8.Location = new System.Drawing.Point(9, 46);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(64, 14);
+            this.label8.Size = new System.Drawing.Size(64, 13);
             this.label8.TabIndex = 11;
             this.label8.Text = "IP Address";
             // 
             // txtIP
             // 
-            this.txtIP.Location = new System.Drawing.Point(79, 47);
+            this.txtIP.Location = new System.Drawing.Point(79, 43);
             this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(97, 20);
+            this.txtIP.Size = new System.Drawing.Size(97, 21);
             this.txtIP.TabIndex = 10;
             this.txtIP.Text = "127.0.0.1";
             this.txtIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(9, 22);
+            this.label6.Location = new System.Drawing.Point(9, 20);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 14);
+            this.label6.Size = new System.Drawing.Size(64, 13);
             this.label6.TabIndex = 9;
             this.label6.Text = "Port";
             // 
             // textBoxPort
             // 
-            this.textBoxPort.Location = new System.Drawing.Point(79, 19);
+            this.textBoxPort.Location = new System.Drawing.Point(79, 18);
             this.textBoxPort.Name = "textBoxPort";
-            this.textBoxPort.Size = new System.Drawing.Size(44, 20);
+            this.textBoxPort.Size = new System.Drawing.Size(44, 21);
             this.textBoxPort.TabIndex = 8;
             this.textBoxPort.Text = "502";
             this.textBoxPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -478,67 +440,6 @@
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog1";
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl1.Location = new System.Drawing.Point(7, 260);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.Padding = new System.Drawing.Point(12, 3);
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(859, 437);
-            this.tabControl1.TabIndex = 35;
-            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.dataTab1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(851, 411);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Address1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // dataTab1
-            // 
-            this.dataTab1.DataLength = ((ushort)(127));
-            this.dataTab1.DisplayFormat = Modbus.Common.DisplayFormat.Integer;
-            this.dataTab1.Location = new System.Drawing.Point(3, 3);
-            this.dataTab1.Name = "dataTab1";
-            this.dataTab1.RegisterData = null;
-            this.dataTab1.ShowDataLength = true;
-            this.dataTab1.Size = new System.Drawing.Size(839, 406);
-            this.dataTab1.StartAddress = ((ushort)(4100));
-            this.dataTab1.TabIndex = 0;
-            this.dataTab1.OnApply += dataTab_OnApply;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.dataTab2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(851, 411);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "...";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // dataTab2
-            // 
-            this.dataTab2.DataLength = ((ushort)(127));
-            //this.dataTab2.DisplayFormat = Modbus.Common.DisplayFormat.LED;
-            this.dataTab2.Location = new System.Drawing.Point(3, 3);
-            this.dataTab2.Name = "dataTab2";
-            this.dataTab2.RegisterData = null;
-            this.dataTab2.ShowDataLength = false;
-            this.dataTab2.Size = new System.Drawing.Size(839, 406);
-            this.dataTab2.StartAddress = ((ushort)(4100));
-            this.dataTab2.TabIndex = 0;
-            this.dataTab2.OnApply += dataTab_OnApply;
             // 
             // grpExchange
             // 
@@ -548,17 +449,39 @@
             this.grpExchange.Controls.Add(this.label1);
             this.grpExchange.Controls.Add(this.label7);
             this.grpExchange.Controls.Add(this.textBoxSlaveDelay);
-            this.grpExchange.Location = new System.Drawing.Point(571, 144);
+            this.grpExchange.Location = new System.Drawing.Point(571, 133);
             this.grpExchange.Name = "grpExchange";
-            this.grpExchange.Size = new System.Drawing.Size(289, 110);
+            this.grpExchange.Size = new System.Drawing.Size(289, 102);
             this.grpExchange.TabIndex = 36;
             this.grpExchange.TabStop = false;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabControl1.Location = new System.Drawing.Point(7, 240);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.Padding = new System.Drawing.Point(12, 3);
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(859, 403);
+            this.tabControl1.TabIndex = 35;
+            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(851, 377);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Chart";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
             // BaseForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(869, 901);
+            this.ClientSize = new System.Drawing.Size(869, 832);
             this.Controls.Add(this.grpExchange);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox4);
@@ -578,11 +501,9 @@
             this.groupBoxMode.PerformLayout();
             this.groupBoxTCP.ResumeLayout(false);
             this.groupBoxTCP.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             this.grpExchange.ResumeLayout(false);
             this.grpExchange.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -627,9 +548,6 @@
         protected System.Windows.Forms.ComboBox comboBoxParity;
         protected System.Windows.Forms.Label labelParity;
         protected System.Windows.Forms.TabPage tabPage1;
-        protected System.Windows.Forms.TabPage tabPage2;
-        protected DataTab dataTab1;
-        protected DataTab dataTab2;
         protected System.Windows.Forms.GroupBox grpExchange;
         protected System.Windows.Forms.Button buttonPauseLog;
         protected TabControlEx tabControl1;

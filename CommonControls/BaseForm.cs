@@ -31,13 +31,13 @@ namespace Modbus.Common
         {
             comboBoxBaudRate.SelectedIndex = 4;
             FillRTUDropDownLists();
-            CurrentTab.RegisterData = _registerData;
+            ////CurrentTab.RegisterData = _registerData;
             if (_registerData == null)
             {
                 throw new ApplicationException("Failed to allocate 128k block");
             }
             LoadUserData();
-            CurrentTab.DisplayFormat = DisplayFormat;
+            //CurrentTab.DisplayFormat = DisplayFormat;
             RefreshData();
         }
 
@@ -291,7 +291,7 @@ namespace Modbus.Common
                 if (rb.Checked)
                 {
                     DisplayFormat.TryParse(rb.Tag.ToString(), true, out _displayFormat);
-                    CurrentTab.DisplayFormat = DisplayFormat;
+                    //CurrentTab.DisplayFormat = DisplayFormat;
                     RefreshData();
                 }
             }
@@ -310,7 +310,7 @@ namespace Modbus.Common
             }
             set
             {
-                CurrentTab.StartAddress = value;
+                //CurrentTab.StartAddress = value;
                 var tab = tabControl1.SelectedTab;
                 tab.Text = value.ToString();
                 _startAddress = value;
@@ -327,7 +327,7 @@ namespace Modbus.Common
             set
             {
                 _dataLength = value;
-                CurrentTab.DataLength =value;
+                //CurrentTab.DataLength =value;
             }
         }
 
@@ -532,7 +532,7 @@ namespace Modbus.Common
                         break;
                 }
                 _displayFormat = value;
-                CurrentTab.DisplayFormat = DisplayFormat;
+                //CurrentTab.DisplayFormat = DisplayFormat;
                 RefreshData();
             }
         }
@@ -629,14 +629,14 @@ namespace Modbus.Common
             RefreshData();
         }
 
-        protected DataTab CurrentTab
-        {
-            get
-            {
-                var tab = tabControl1.SelectedTab;
-                return (DataTab)tab.Controls[0];
-            }
-        }
+        //protected DataTab CurrentTab
+        //{
+        //    get
+        //    {
+        //        var tab = tabControl1.SelectedTab;
+        //        return (DataTab)tab.Controls[0];
+        //    }
+        //}
 
         public void RefreshData()
         {
@@ -645,7 +645,7 @@ namespace Modbus.Common
                 BeginInvoke(new Action(RefreshData));
                 return;
             }
-            CurrentTab.RefreshData();
+            //CurrentTab.RefreshData();
         }
 
         public void UpdateDataTable()
@@ -655,15 +655,15 @@ namespace Modbus.Common
                 BeginInvoke(new Action(UpdateDataTable));
                 return;
             }
-            CurrentTab.UpdateDataTable();
+            //CurrentTab.UpdateDataTable();
         }
 
         #endregion
 
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
-            CurrentTab.RegisterData = _registerData;
-            CurrentTab.DisplayFormat = DisplayFormat;
+            //CurrentTab.RegisterData = _registerData;
+            //CurrentTab.DisplayFormat = DisplayFormat;
             var tab = tabControl1.SelectedTab;
             if (tab.Text.Equals("...") && tabControl1.TabPages.Count < 20)
             {
@@ -689,19 +689,29 @@ namespace Modbus.Common
                 tabPage.UseVisualStyleBackColor = true;
                 tabControl1.Controls.Add(tabPage);
             }
-            var address = CurrentTab.StartAddress;
-            tab.Text = address.ToString();
-            _startAddress = address;
-            _dataLength = CurrentTab.DataLength;
+            //var address = CurrentTab.StartAddress;
+            //tab.Text = address.ToString();
+            //_startAddress = address;
+            //_dataLength = CurrentTab.DataLength;
         }
 
         void dataTab_OnApply(object sender, EventArgs e)
         {
-            var tab = tabControl1.SelectedTab;
-            var address = CurrentTab.StartAddress;
-            tab.Text = address.ToString();
-            _startAddress = address;
-            _dataLength = CurrentTab.DataLength;
+            //var tab = tabControl1.SelectedTab;
+            ////var address = CurrentTab.StartAddress;
+            //tab.Text = address.ToString();
+            //_startAddress = address;
+            //_dataLength = CurrentTab.DataLength;
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButtonInteger_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
