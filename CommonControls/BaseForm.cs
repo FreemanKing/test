@@ -286,16 +286,19 @@ namespace Modbus.Common
 
         private void RadioButtonDisplayFormatCheckedChanged(object sender, EventArgs e)
         {
-            if (sender is RadioButton)
-            {
-                var rb = (RadioButton)sender;
-                if (rb.Checked)
-                {
-                    DisplayFormat.TryParse(rb.Tag.ToString(), true, out _displayFormat);
-                    //CurrentTab.DisplayFormat = DisplayFormat;
-                    RefreshData();
-                }
-            }
+            InitChart();
+            timerCount.Start();
+
+            //if (sender is RadioButton)
+            //{
+            //    var rb = (RadioButton)sender;
+            //    if (rb.Checked)
+            //    {
+            //        DisplayFormat.TryParse(rb.Tag.ToString(), true, out _displayFormat);
+            //        //CurrentTab.DisplayFormat = DisplayFormat;
+            //        RefreshData();
+            //    }
+            //}
         }
 
         #endregion
@@ -741,26 +744,6 @@ namespace Modbus.Common
 
             this.signalChart.Series[0].ChartType = SeriesChartType.Spline;
             this.signalChart.Series[0].Points.Clear();
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButtonInteger_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void signalChart_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

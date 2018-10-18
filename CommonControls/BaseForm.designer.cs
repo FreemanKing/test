@@ -165,7 +165,6 @@ namespace Modbus.Common
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Display Format";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // radioButtonInteger
             // 
@@ -177,7 +176,6 @@ namespace Modbus.Common
             this.radioButtonInteger.TabStop = true;
             this.radioButtonInteger.Tag = "Integer";
             this.radioButtonInteger.Text = "Integer";
-            this.radioButtonInteger.CheckedChanged += new System.EventHandler(this.radioButtonInteger_CheckedChanged);
             this.radioButtonInteger.Click += new System.EventHandler(this.RadioButtonDisplayFormatCheckedChanged);
             // 
             // buttonImport
@@ -486,7 +484,6 @@ namespace Modbus.Common
             this.signalChart.Size = new System.Drawing.Size(884, 422);
             this.signalChart.TabIndex = 1;
             this.signalChart.Text = "chart1";
-            this.signalChart.Click += new System.EventHandler(this.signalChart_Click);
             // 
             // timerCount
             // 
