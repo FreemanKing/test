@@ -47,16 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataTab.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DataTab.Designer.cs">
-      <DependentUpon>DataTab.cs</DependentUpon>
-    </Compile>
     <Compile Include="Enumerations.cs" />
-    <Compile Include="LedBulb.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,9 +72,6 @@
   <ItemGroup>
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DataTab.resx">
-      <DependentUpon>DataTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -667,19 +667,19 @@ namespace Modbus.Common
             var tab = tabControl1.SelectedTab;
             if (tab.Text.Equals("...") && tabControl1.TabPages.Count < 20)
             {
-                DataTab dataTab = new DataTab();
-                dataTab.DataLength = ((ushort)(256));
-                dataTab.DisplayFormat = DisplayFormat.Integer;
-                dataTab.Location = new Point(3, 3);
-                dataTab.Name = "dataTab" + (tabControl1.TabPages.Count+1);
-                dataTab.RegisterData = _registerData;
-                dataTab.ShowDataLength = ShowDataLength;
-                dataTab.Size = new Size(839, 406);
-                dataTab.StartAddress = ((ushort)(0));
-                dataTab.TabIndex = 0;
-                dataTab.OnApply += dataTab_OnApply;
+                //DataTab dataTab = new DataTab();
+                //dataTab.DataLength = ((ushort)(256));
+                //dataTab.DisplayFormat = DisplayFormat.Integer;
+                //dataTab.Location = new Point(3, 3);
+                //dataTab.Name = "dataTab" + (tabControl1.TabPages.Count+1);
+                //dataTab.RegisterData = _registerData;
+                //dataTab.ShowDataLength = ShowDataLength;
+                //dataTab.Size = new Size(839, 406);
+                //dataTab.StartAddress = ((ushort)(0));
+                //dataTab.TabIndex = 0;
+                //dataTab.OnApply += dataTab_OnApply;
                 TabPage tabPage = new TabPage();
-                tabPage.Controls.Add(dataTab);
+                ////tabPage.Controls.Add(dataTab);
                 tabPage.Location = new Point(4, 22);
                 tabPage.Name = "tabPage" + (tabControl1.TabPages.Count + 1);
                 tabPage.Padding = new Padding(3);

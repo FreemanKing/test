@@ -30,29 +30,29 @@ namespace Modbus.Common
             e.Graphics.DrawString(TabPages[e.Index].Text, e.Font, Brushes.Black, new PointF(r.X + 10, r.Y));
             e.DrawFocusRectangle();
         }
-        protected override void OnMouseClick(MouseEventArgs e)
-        {
-            Point p = e.Location;
-            for (int i = 0; i < TabCount; i++)
-            {
-                Rectangle r = GetTabRect(i);
-                r.Width = 10;
-                if (r.Contains(p))
-                {
-                    CloseTab(i);
-                }
-            }
-        }
+        //protected override void OnMouseClick(MouseEventArgs e)
+        //{
+        //    Point p = e.Location;
+        //    for (int i = 0; i < TabCount; i++)
+        //    {
+        //        Rectangle r = GetTabRect(i);
+        //        r.Width = 10;
+        //        if (r.Contains(p))
+        //        {
+        //            CloseTab(i);
+        //        }
+        //    }
+        //}
 
-        private void CloseTab(int i)
-        {
-            if (PreRemoveTabPage != null)
-            {
-                bool closeIt = PreRemoveTabPage(i);
-                if (!closeIt)
-                    return;
-            }
-            TabPages.Remove(TabPages[i]);
-        }
+        //private void CloseTab(int i)
+        //{
+        //    if (PreRemoveTabPage != null)
+        //    {
+        //        bool closeIt = PreRemoveTabPage(i);
+        //        if (!closeIt)
+        //            return;
+        //    }
+        //    TabPages.Remove(TabPages[i]);
+        //}
     }
 }
