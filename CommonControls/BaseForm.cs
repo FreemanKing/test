@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Configuration;
+using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.IO.Ports;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Modbus.Common
 {
@@ -26,7 +27,7 @@ namespace Modbus.Common
             InitializeComponent();
             _registerData = new UInt16[65600];
         }
-        
+
         private void BaseFormLoading(object sender, EventArgs e)
         {
             comboBoxBaudRate.SelectedIndex = 4;
@@ -180,15 +181,15 @@ namespace Modbus.Common
                 case DisplayFormat.Integer:
                     radioButtonInteger.Checked = true;
                     break;
-                //case DisplayFormat.Binary:
-                //    radioButtonBinary.Checked = true;
-                //    break;
-                //case DisplayFormat.Hex:
-                //    radioButtonHex.Checked = true;
-                //    break;
-                //case DisplayFormat.LED:
-                //    radioButtonLED.Checked = true;
-                //    break;
+                    //case DisplayFormat.Binary:
+                    //    radioButtonBinary.Checked = true;
+                    //    break;
+                    //case DisplayFormat.Hex:
+                    //    radioButtonHex.Checked = true;
+                    //    break;
+                    //case DisplayFormat.LED:
+                    //    radioButtonLED.Checked = true;
+                    //    break;
             }
         }
 
@@ -202,15 +203,15 @@ namespace Modbus.Common
                 case DisplayFormat.Integer:
                     suffix = "_Decimal_";
                     break;
-                //case DisplayFormat.Hex:
-                //    suffix = "_HEX_";
-                //    break;
-                //case DisplayFormat.Binary:
-                //    suffix = "_Binary_";
-                //    break;
-                //case DisplayFormat.LED:
-                //    suffix = "_LED_";
-                //    break;
+                    //case DisplayFormat.Hex:
+                    //    suffix = "_HEX_";
+                    //    break;
+                    //case DisplayFormat.Binary:
+                    //    suffix = "_Binary_";
+                    //    break;
+                    //case DisplayFormat.LED:
+                    //    suffix = "_LED_";
+                    //    break;
             }
             var filename = "ModbusExport_" + startAddress + suffix + DateTime.Now.ToString("yyyyMMddHHmm") + ".csv";
             saveFileDialog.AddExtension = true;
@@ -233,13 +234,13 @@ namespace Modbus.Common
                                 case DisplayFormat.Integer:
                                     w.Write(string.Format("{0}", data));
                                     break;
-                                //case DisplayFormat.Hex:
-                                //    w.Write(string.Format("0x{0:x4}", data));
-                                //    break;
-                                //case DisplayFormat.Binary:
-                                //case DisplayFormat.LED:
-                                //    w.Write(Convert.ToString(data, 2).PadLeft(16, '0'));
-                                //    break;
+                                    //case DisplayFormat.Hex:
+                                    //    w.Write(string.Format("0x{0:x4}", data));
+                                    //    break;
+                                    //case DisplayFormat.Binary:
+                                    //case DisplayFormat.LED:
+                                    //    w.Write(Convert.ToString(data, 2).PadLeft(16, '0'));
+                                    //    break;
                             }
                             if (x < length - 1)
                                 w.Write(',');
@@ -311,8 +312,8 @@ namespace Modbus.Common
             set
             {
                 //CurrentTab.StartAddress = value;
-                var tab = tabControl1.SelectedTab;
-                tab.Text = value.ToString();
+                //var tab = tabControl1.SelectedTab;
+                //tab.Text = value.ToString();
                 _startAddress = value;
             }
         }
@@ -695,13 +696,86 @@ namespace Modbus.Common
             //_dataLength = CurrentTab.DataLength;
         }
 
-        void dataTab_OnApply(object sender, EventArgs e)
+        ///
+        ///  signal chart member and functions
+        /// 
+        private Queue<double> dataQueue = new Queue<double>(100);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSignalStartClick(object sender, EventArgs e)
         {
-            //var tab = tabControl1.SelectedTab;
-            ////var address = CurrentTab.StartAddress;
-            //tab.Text = address.ToString();
-            //_startAddress = address;
-            //_dataLength = CurrentTab.DataLength;
+            this.timerCount.Start();
+        }
+
+        private void timerCountTick(object sender, EventArgs e)
+        {
+            UpdateQueueValue();
+            this.signalChart.Series[0].Points.Clear();
+            for (int i = 0; i < dataQueue.Count; i++)
+            {
+                this.signalChart.Series[0].Points.AddXY((i + 1), dataQueue.ElementAt(i));
+            }
+        }
+        private int curValue = 0;
+
+        private int num = 5;//每次删除增加几个点
+
+        private void UpdateQueueValue()
+        {
+            if (dataQueue.Count > 100)
+            {
+                //先出列
+                for (int i = 0; i < num; i++)
+                {
+                    dataQueue.Dequeue();
+                }
+            }
+
+            for (int i = 0; i < num; i++)
+            {
+                //对curValue只取[0,360]之间的值
+                curValue = curValue % 360;
+                //对得到的正玄值，放大50倍，并上移50
+                dataQueue.Enqueue((50 * Math.Sin(curValue * Math.PI / 180)) + 50);
+                curValue = curValue + 10;
+            }
+        }
+
+
+        private void btnSignalStopClick(object sender, EventArgs e)
+        {
+            this.timerCount.Stop();
+        }
+        private void btnInitClick(object sender, EventArgs e)
+        {
+            InitChart();
+        }
+
+        private void InitChart()
+        {
+            this.signalChart.ChartAreas.Clear();
+            ChartArea chartArea = new ChartArea("SignalChartArea");
+            this.signalChart.ChartAreas.Add(chartArea);
+
+            signalChart.Series.Clear();
+            Series series = new Series("SignalSeries");
+            series.ChartArea = "SignalChartArea";
+            this.signalChart.Series.Add(series);
+
+            this.signalChart.ChartAreas[0].AxisY.Minimum = 0;
+            this.signalChart.ChartAreas[0].AxisY.Maximum = 100;
+            this.signalChart.ChartAreas[0].AxisX.Interval = 5;
+            this.signalChart.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Silver;
+            this.signalChart.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.Silver;
+
+            this.signalChart.Series[0].Color = Color.Red;
+
+            this.signalChart.Series[0].ChartType = SeriesChartType.Spline;
+            this.signalChart.Series[0].Points.Clear();
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
@@ -710,6 +784,16 @@ namespace Modbus.Common
         }
 
         private void radioButtonInteger_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void signalChart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

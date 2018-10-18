@@ -1,11 +1,9 @@
-﻿namespace Modbus.Common
+﻿using System.Windows.Forms;
+
+namespace Modbus.Common
 {
     partial class BaseForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        protected System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -28,6 +26,7 @@
         /// </summary>
         protected void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.buttonPauseLog = new System.Windows.Forms.Button();
@@ -65,8 +64,13 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.grpExchange = new System.Windows.Forms.GroupBox();
-            this.tabControl1 = new Modbus.Common.TabControlEx();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnSignalStart = new System.Windows.Forms.Button();
+            this.signalChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.timerCount = new System.Windows.Forms.Timer(this.components);
+            this.btnSignalStop = new System.Windows.Forms.Button();
+            this.btnInit = new System.Windows.Forms.Button();
+            this.tabControl1 = new Modbus.Common.TabControlEx();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.grpStart.SuspendLayout();
@@ -74,7 +78,7 @@
             this.groupBoxMode.SuspendLayout();
             this.groupBoxTCP.SuspendLayout();
             this.grpExchange.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.signalChart)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox4
@@ -449,23 +453,11 @@
             this.grpExchange.Controls.Add(this.label1);
             this.grpExchange.Controls.Add(this.label7);
             this.grpExchange.Controls.Add(this.textBoxSlaveDelay);
-            this.grpExchange.Location = new System.Drawing.Point(571, 133);
+            this.grpExchange.Location = new System.Drawing.Point(571, 154);
             this.grpExchange.Name = "grpExchange";
-            this.grpExchange.Size = new System.Drawing.Size(289, 102);
+            this.grpExchange.Size = new System.Drawing.Size(289, 81);
             this.grpExchange.TabIndex = 36;
             this.grpExchange.TabStop = false;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl1.Location = new System.Drawing.Point(7, 240);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.Padding = new System.Drawing.Point(12, 3);
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(859, 403);
-            this.tabControl1.TabIndex = 35;
-            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
             // 
             // tabPage1
             // 
@@ -477,6 +469,61 @@
             this.tabPage1.Text = "Chart";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnSignalStart
+            // 
+            this.btnSignalStart.Location = new System.Drawing.Point(759, 103);
+            this.btnSignalStart.Name = "btnSignalStart";
+            this.btnSignalStart.Size = new System.Drawing.Size(86, 23);
+            this.btnSignalStart.TabIndex = 0;
+            this.btnSignalStart.Text = "开始";
+            this.btnSignalStart.UseVisualStyleBackColor = true;
+            this.btnSignalStart.Click += new System.EventHandler(this.btnSignalStartClick);
+            // 
+            // signalChart
+            // 
+            this.signalChart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.signalChart.Location = new System.Drawing.Point(7, 240);
+            this.signalChart.Name = "signalChart";
+            this.signalChart.Size = new System.Drawing.Size(884, 422);
+            this.signalChart.TabIndex = 1;
+            this.signalChart.Text = "chart1";
+            this.signalChart.Click += new System.EventHandler(this.signalChart_Click);
+            // 
+            // timerCount
+            // 
+            this.timerCount.Interval = 300;
+            this.timerCount.Tick += new System.EventHandler(this.timerCountTick);
+            // 
+            // btnSignalStop
+            // 
+            this.btnSignalStop.Location = new System.Drawing.Point(759, 132);
+            this.btnSignalStop.Name = "btnSignalStop";
+            this.btnSignalStop.Size = new System.Drawing.Size(86, 23);
+            this.btnSignalStop.TabIndex = 2;
+            this.btnSignalStop.Text = "停止";
+            this.btnSignalStop.UseVisualStyleBackColor = true;
+            this.btnSignalStop.Click += new System.EventHandler(this.btnSignalStopClick);
+            // 
+            // btnInit
+            // 
+            this.btnInit.Location = new System.Drawing.Point(759, 74);
+            this.btnInit.Name = "btnInit";
+            this.btnInit.Size = new System.Drawing.Size(86, 23);
+            this.btnInit.TabIndex = 3;
+            this.btnInit.Text = "初始化";
+            this.btnInit.UseVisualStyleBackColor = true;
+            this.btnInit.Click += new System.EventHandler(this.btnInitClick);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabControl1.Location = new System.Drawing.Point(241, 269);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(200, 63);
+            this.tabControl1.TabIndex = 37;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            // 
             // BaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -487,6 +534,10 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.grpStart);
             this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.btnInit);
+            this.Controls.Add(this.btnSignalStop);
+            this.Controls.Add(this.signalChart);
+            this.Controls.Add(this.btnSignalStart);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BaseForm";
             this.Text = "Modbus Slave";
@@ -503,7 +554,7 @@
             this.groupBoxTCP.PerformLayout();
             this.grpExchange.ResumeLayout(false);
             this.grpExchange.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.signalChart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -550,6 +601,13 @@
         protected System.Windows.Forms.TabPage tabPage1;
         protected System.Windows.Forms.GroupBox grpExchange;
         protected System.Windows.Forms.Button buttonPauseLog;
+
+        private Button btnSignalStart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart signalChart;
+        private Timer timerCount;
+        private Button btnSignalStop;
+        private Button btnInit;
+        private System.ComponentModel.IContainer components;
         protected TabControlEx tabControl1;
     }
 }
