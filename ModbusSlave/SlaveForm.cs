@@ -24,15 +24,12 @@ namespace ModbusSlave
         public SlaveForm()
         {
             InitializeComponent();
-            //dataTab1.ShowDataLength = false;
-            //dataTab2.ShowDataLength = false;
         }
 
         private void SlaveFormClosing(object sender, FormClosingEventArgs e)
         {
             SaveUserData();
             DoDisconnect();
-            //broadcasrter.Stop();
         }
 
         private void SlaveFormLoading(object sender, EventArgs e)

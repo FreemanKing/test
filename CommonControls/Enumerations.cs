@@ -7,9 +7,6 @@ namespace Modbus.Common
 {
     public enum DisplayFormat
     {
-        //LED,
-        //Binary,
-        //Hex,
         Integer
     }
 

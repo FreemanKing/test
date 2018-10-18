@@ -70,7 +70,6 @@ namespace Modbus.Common
             this.timerCount = new System.Windows.Forms.Timer(this.components);
             this.btnSignalStop = new System.Windows.Forms.Button();
             this.btnInit = new System.Windows.Forms.Button();
-            this.tabControl1 = new Modbus.Common.TabControlEx();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.grpStart.SuspendLayout();
@@ -514,23 +513,12 @@ namespace Modbus.Common
             this.btnInit.UseVisualStyleBackColor = true;
             this.btnInit.Click += new System.EventHandler(this.btnInitClick);
             // 
-            // tabControl1
-            // 
-            this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl1.Location = new System.Drawing.Point(241, 269);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(200, 63);
-            this.tabControl1.TabIndex = 37;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            // 
             // BaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(869, 832);
             this.Controls.Add(this.grpExchange);
-            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.grpStart);
             this.Controls.Add(this.groupBox3);
@@ -608,6 +596,5 @@ namespace Modbus.Common
         private Button btnSignalStop;
         private Button btnInit;
         private System.ComponentModel.IContainer components;
-        protected TabControlEx tabControl1;
     }
 }

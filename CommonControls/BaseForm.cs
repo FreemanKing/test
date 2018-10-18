@@ -519,21 +519,11 @@ namespace Modbus.Common
             {
                 switch (value)
                 {
-                    //case DisplayFormat.LED:
-                    //    radioButtonLED.Checked = true;
-                    //    break;
-                    //case DisplayFormat.Binary:
-                    //    radioButtonBinary.Checked = true;
-                    //    break;
-                    //case DisplayFormat.Hex:
-                    //    radioButtonHex.Checked = true;
-                    //    break;
                     case DisplayFormat.Integer:
                         radioButtonInteger.Checked = true;
                         break;
                 }
                 _displayFormat = value;
-                //CurrentTab.DisplayFormat = DisplayFormat;
                 RefreshData();
             }
         }
@@ -663,37 +653,12 @@ namespace Modbus.Common
 
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
-            //CurrentTab.RegisterData = _registerData;
-            //CurrentTab.DisplayFormat = DisplayFormat;
-            var tab = tabControl1.SelectedTab;
-            if (tab.Text.Equals("...") && tabControl1.TabPages.Count < 20)
-            {
-                //DataTab dataTab = new DataTab();
-                //dataTab.DataLength = ((ushort)(256));
-                //dataTab.DisplayFormat = DisplayFormat.Integer;
-                //dataTab.Location = new Point(3, 3);
-                //dataTab.Name = "dataTab" + (tabControl1.TabPages.Count+1);
-                //dataTab.RegisterData = _registerData;
-                //dataTab.ShowDataLength = ShowDataLength;
-                //dataTab.Size = new Size(839, 406);
-                //dataTab.StartAddress = ((ushort)(0));
-                //dataTab.TabIndex = 0;
-                //dataTab.OnApply += dataTab_OnApply;
-                TabPage tabPage = new TabPage();
-                ////tabPage.Controls.Add(dataTab);
-                tabPage.Location = new Point(4, 22);
-                tabPage.Name = "tabPage" + (tabControl1.TabPages.Count + 1);
-                tabPage.Padding = new Padding(3);
-                tabPage.Size = new Size(851, 411);
-                tabPage.TabIndex = tabControl1.TabPages.Count;
-                tabPage.Text = "...";
-                tabPage.UseVisualStyleBackColor = true;
-                tabControl1.Controls.Add(tabPage);
-            }
-            //var address = CurrentTab.StartAddress;
-            //tab.Text = address.ToString();
-            //_startAddress = address;
-            //_dataLength = CurrentTab.DataLength;
+            TabPage tabPage = new TabPage();
+            tabPage.Location = new Point(4, 22);
+            tabPage.Padding = new Padding(3);
+            tabPage.Size = new Size(851, 411);
+            tabPage.Text = "...";
+            tabPage.UseVisualStyleBackColor = true;
         }
 
         ///
