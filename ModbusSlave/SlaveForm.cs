@@ -334,16 +334,16 @@ namespace ModbusSlave
         private void DoWrite(ModbusCommand command)
         {
             var dataAddress = command.Offset;
-            if (dataAddress < StartAddress || dataAddress > StartAddress + DataLength)
-            {
-                AppendLog(String.Format("Received address is not within viewable range, Received address:{0}.", dataAddress));
-                return;
-            }
-            if ((command.Count + dataAddress) > _registerData.Length)
-            {
-                AppendLog(String.Format("Received address is not within viewable range, Received address:{0}.", dataAddress));
-                return;
-            }
+            //if (dataAddress < StartAddress || dataAddress > StartAddress + DataLength)
+            //{
+            //    AppendLog(String.Format("Received address is not within viewable range, Received address:{0}.", dataAddress));
+            //    return;
+            //}
+            //if ((command.Count + dataAddress) > _registerData.Length)
+            //{
+            //    AppendLog(String.Format("Received address is not within viewable range, Received address:{0}.", dataAddress));
+            //    return;
+            //}
             command.Data.CopyTo(_registerData, dataAddress);
             UpdateDataTable();
             AppendLog(String.Format("Received data: Function code:{0}.", command.FunctionCode));

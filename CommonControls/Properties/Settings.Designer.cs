@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Modbus.Common.Properties {
     
     
@@ -98,9 +100,9 @@ namespace Modbus.Common.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public ushort StartAddress {
+        public Queue<double> StartAddress {
             get {
-                return ((ushort)(this["StartAddress"]));
+                return ((Queue<double>)(this["StartAddress"]));
             }
             set {
                 this["StartAddress"] = value;

@@ -185,7 +185,7 @@ namespace Modbus.Common
             this.buttonImport.Size = new System.Drawing.Size(86, 26);
             this.buttonImport.TabIndex = 26;
             this.buttonImport.Text = "Import";
-            this.buttonImport.Click += new System.EventHandler(this.ButtonImportClick);
+            //this.buttonImport.Click += new System.EventHandler(this.ButtonImportClick);
             // 
             // buttonExport
             // 
@@ -194,7 +194,7 @@ namespace Modbus.Common
             this.buttonExport.Size = new System.Drawing.Size(86, 26);
             this.buttonExport.TabIndex = 25;
             this.buttonExport.Text = "Export";
-            this.buttonExport.Click += new System.EventHandler(this.ButtonExportClick);
+            //this.buttonExport.Click += new System.EventHandler(this.ButtonExportClick);
             // 
             // grpStart
             // 

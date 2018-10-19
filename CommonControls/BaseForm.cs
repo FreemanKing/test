@@ -30,16 +30,16 @@ namespace Modbus.Common
 
         private void BaseFormLoading(object sender, EventArgs e)
         {
-            comboBoxBaudRate.SelectedIndex = 4;
-            FillRTUDropDownLists();
-            ////CurrentTab.RegisterData = _registerData;
-            if (_registerData == null)
-            {
-                throw new ApplicationException("Failed to allocate 128k block");
-            }
-            LoadUserData();
+            //comboBoxBaudRate.SelectedIndex = 4;
+            //FillRTUDropDownLists();
+            //CurrentTab.RegisterData = _registerData;
+            //if (_registerData == null)
+            //{
+            //    throw new ApplicationException("Failed to allocate 128k block");
+            //}
+            //LoadUserData();
             //CurrentTab.DisplayFormat = DisplayFormat;
-            RefreshData();
+            //RefreshData();
         }
 
         private void BaseFormClosing(object sender, FormClosingEventArgs e)
@@ -111,59 +111,59 @@ namespace Modbus.Common
 
         private void ButtonImportClick(object sender, EventArgs e)
         {
-            openFileDialog.AddExtension = true;
-            openFileDialog.DefaultExt = ".csv";
-            openFileDialog.Multiselect = false;
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                using (var s = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
-                {
-                    using (var r = new StreamReader(s))
-                    {
-                        var rec = r.ReadToEnd();
-                        var sets = rec.Split(',');
-                        var first = true;
-                        foreach (var s1 in sets)
-                        {
-                            DisplayFormat fmt;
-                            var v = s1.Split(':');
-                            var address = int.Parse(v[0]);
-                            ushort data;
-                            //if (v[1].StartsWith("0x", StringComparison.CurrentCultureIgnoreCase))
-                            //{
-                            //    //fmt = DisplayFormat.Hex;
-                            //    var sub = v[1].Substring(2);
-                            //    ushort.TryParse(sub, NumberStyles.HexNumber, CultureInfo.CurrentCulture, out data);
-                            //}
-                            //else if (v[1].Length > 6) //must be binary
-                            //{
-                            //    //fmt = DisplayFormat.Binary;
-                            //    data = Convert.ToUInt16(v[1], 2);
-                            //}
-                            //else
-                            {
-                                fmt = DisplayFormat.Integer;
-                                data = Convert.ToUInt16(v[1], 10);
-                            }
-                            if (address < _registerData.Length)
-                            {
-                                _registerData[address] = data;
-                            }
-                            if (first)
-                            {
-                                SetFunction(fmt);
-                                first = false;
-                                StartAddress = UInt16.Parse(v[0]);
-                            }
-                        }
-                        r.Close();
-                        DataLength = Convert.ToUInt16(sets.Length);
-                        // display data
-                    }
-                    s.Close();
-                }
-                RefreshData();
-            }
+            //openFileDialog.AddExtension = true;
+            //openFileDialog.DefaultExt = ".csv";
+            //openFileDialog.Multiselect = false;
+            //if (openFileDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    using (var s = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+            //    {
+            //        using (var r = new StreamReader(s))
+            //        {
+            //            var rec = r.ReadToEnd();
+            //            var sets = rec.Split(',');
+            //            var first = true;
+            //            foreach (var s1 in sets)
+            //            {
+            //                DisplayFormat fmt;
+            //                var v = s1.Split(':');
+            //                var address = int.Parse(v[0]);
+            //                ushort data;
+            //                //if (v[1].StartsWith("0x", StringComparison.CurrentCultureIgnoreCase))
+            //                //{
+            //                //    //fmt = DisplayFormat.Hex;
+            //                //    var sub = v[1].Substring(2);
+            //                //    ushort.TryParse(sub, NumberStyles.HexNumber, CultureInfo.CurrentCulture, out data);
+            //                //}
+            //                //else if (v[1].Length > 6) //must be binary
+            //                //{
+            //                //    //fmt = DisplayFormat.Binary;
+            //                //    data = Convert.ToUInt16(v[1], 2);
+            //                //}
+            //                //else
+            //                {
+            //                    fmt = DisplayFormat.Integer;
+            //                    data = Convert.ToUInt16(v[1], 10);
+            //                }
+            //                if (address < _registerData.Length)
+            //                {
+            //                    _registerData[address] = data;
+            //                }
+            //                if (first)
+            //                {
+            //                    SetFunction(fmt);
+            //                    first = false;
+            //                    StartAddress = UInt16.Parse(v[0]);
+            //                }
+            //            }
+            //            r.Close();
+            //            DataLength = Convert.ToUInt16(sets.Length);
+            //            // display data
+            //        }
+            //        s.Close();
+            //    }
+            //    RefreshData();
+            //}
         }
 
         public delegate void SetFunctionDelegate(DisplayFormat log);
@@ -195,62 +195,62 @@ namespace Modbus.Common
 
         private void ButtonExportClick(object sender, EventArgs e)
         {
-            var startAddress = StartAddress;
-            var length = DataLength;
-            string suffix = "-";
-            switch (DisplayFormat)
-            {
-                case DisplayFormat.Integer:
-                    suffix = "_Decimal_";
-                    break;
-                    //case DisplayFormat.Hex:
-                    //    suffix = "_HEX_";
-                    //    break;
-                    //case DisplayFormat.Binary:
-                    //    suffix = "_Binary_";
-                    //    break;
-                    //case DisplayFormat.LED:
-                    //    suffix = "_LED_";
-                    //    break;
-            }
-            var filename = "ModbusExport_" + startAddress + suffix + DateTime.Now.ToString("yyyyMMddHHmm") + ".csv";
-            saveFileDialog.AddExtension = true;
-            saveFileDialog.DefaultExt = ".csv";
-            saveFileDialog.FileName = filename;
-            saveFileDialog.OverwritePrompt = true;
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                using (var s = saveFileDialog.OpenFile())
-                {
-                    using (var w = new StreamWriter(s))
-                    {
-                        for (var x = 0; x < length; x++)
-                        {
-                            w.Write(startAddress++);
-                            w.Write(':');
-                            var data = _registerData[StartAddress + x];
-                            switch (DisplayFormat)
-                            {
-                                case DisplayFormat.Integer:
-                                    w.Write(string.Format("{0}", data));
-                                    break;
-                                    //case DisplayFormat.Hex:
-                                    //    w.Write(string.Format("0x{0:x4}", data));
-                                    //    break;
-                                    //case DisplayFormat.Binary:
-                                    //case DisplayFormat.LED:
-                                    //    w.Write(Convert.ToString(data, 2).PadLeft(16, '0'));
-                                    //    break;
-                            }
-                            if (x < length - 1)
-                                w.Write(',');
-                        }
-                        w.Flush();
-                        w.Close();
-                    }
-                    s.Close();
-                }
-            }
+            //var startAddress = StartAddress;
+            //var length = DataLength;
+            //string suffix = "-";
+            //switch (DisplayFormat)
+            //{
+            //    case DisplayFormat.Integer:
+            //        suffix = "_Decimal_";
+            //        break;
+            //        //case DisplayFormat.Hex:
+            //        //    suffix = "_HEX_";
+            //        //    break;
+            //        //case DisplayFormat.Binary:
+            //        //    suffix = "_Binary_";
+            //        //    break;
+            //        //case DisplayFormat.LED:
+            //        //    suffix = "_LED_";
+            //        //    break;
+            //}
+            //var filename = "ModbusExport_" + startAddress + suffix + DateTime.Now.ToString("yyyyMMddHHmm") + ".csv";
+            //saveFileDialog.AddExtension = true;
+            //saveFileDialog.DefaultExt = ".csv";
+            //saveFileDialog.FileName = filename;
+            //saveFileDialog.OverwritePrompt = true;
+            //if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    using (var s = saveFileDialog.OpenFile())
+            //    {
+            //        using (var w = new StreamWriter(s))
+            //        {
+            //            for (var x = 0; x < length; x++)
+            //            {
+            //                w.Write(startAddress++);
+            //                w.Write(':');
+            //                var data = _registerData[StartAddress + x];
+            //                switch (DisplayFormat)
+            //                {
+            //                    case DisplayFormat.Integer:
+            //                        w.Write(string.Format("{0}", data));
+            //                        break;
+            //                        //case DisplayFormat.Hex:
+            //                        //    w.Write(string.Format("0x{0:x4}", data));
+            //                        //    break;
+            //                        //case DisplayFormat.Binary:
+            //                        //case DisplayFormat.LED:
+            //                        //    w.Write(Convert.ToString(data, 2).PadLeft(16, '0'));
+            //                        //    break;
+            //                }
+            //                if (x < length - 1)
+            //                    w.Write(',');
+            //            }
+            //            w.Flush();
+            //            w.Close();
+            //        }
+            //        s.Close();
+            //    }
+            //}
         }
 
         #endregion
@@ -286,27 +286,24 @@ namespace Modbus.Common
 
         private void RadioButtonDisplayFormatCheckedChanged(object sender, EventArgs e)
         {
-            InitChart();
-            timerCount.Start();
-
-            //if (sender is RadioButton)
-            //{
-            //    var rb = (RadioButton)sender;
-            //    if (rb.Checked)
-            //    {
-            //        DisplayFormat.TryParse(rb.Tag.ToString(), true, out _displayFormat);
-            //        //CurrentTab.DisplayFormat = DisplayFormat;
-            //        RefreshData();
-            //    }
-            //}
+            if (sender is RadioButton)
+            {
+                var rb = (RadioButton)sender;
+                if (rb.Checked)
+                {
+                    DisplayFormat.TryParse(rb.Tag.ToString(), true, out _displayFormat);
+                    CurrentTab.DisplayFormat = DisplayFormat;
+                    RefreshData();
+                }
+            }
         }
 
         #endregion
 
         #region properties
 
-        private ushort _startAddress;
-        protected ushort StartAddress
+        private Queue<double> _startAddress;
+        protected Queue<double> StartAddress
         {
             get
             {
@@ -331,7 +328,7 @@ namespace Modbus.Common
             set
             {
                 _dataLength = value;
-                //CurrentTab.DataLength =value;
+                CurrentTab.DataLength = value;
             }
         }
 
@@ -623,14 +620,15 @@ namespace Modbus.Common
             RefreshData();
         }
 
-        //protected DataTab CurrentTab
-        //{
-        //    get
-        //    {
-        //        var tab = tabControl1.SelectedTab;
-        //        return (DataTab)tab.Controls[0];
-        //    }
-        //}
+        protected DataTab CurrentTab
+        {
+            get
+            {
+                //var tab = tabControl1.SelectedTab;
+                //return (DataTab)tab.Controls[0];
+                return null;
+            }
+        }
 
         public void RefreshData()
         {
@@ -639,17 +637,19 @@ namespace Modbus.Common
                 BeginInvoke(new Action(RefreshData));
                 return;
             }
-            //CurrentTab.RefreshData();
+            CurrentTab.RefreshData();
         }
 
         public void UpdateDataTable()
         {
             if (InvokeRequired)
             {
+                AppendLog(String.Format("InvokeRequired: 0 "));
                 BeginInvoke(new Action(UpdateDataTable));
                 return;
             }
-            //CurrentTab.UpdateDataTable();
+            AppendLog(String.Format("InvokeRequired: 1 "));
+            CurrentTab.UpdateDataTable();
         }
 
         #endregion
